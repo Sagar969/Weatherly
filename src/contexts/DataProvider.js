@@ -125,7 +125,7 @@ const DataProvider = (props) => {
     if (!loc) curLocWeather();
   }, [tempUnit]);
   useEffect(() => {
-    if (loc) getCoords(loc).catch((err) => handleError(err));
+    if (loc) getCoords(loc);
   }, [loc, tempUnit]);
 
   const successCall = (pos) => {
