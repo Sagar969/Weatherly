@@ -4,12 +4,13 @@ import Logo from './Logo'
 import SearchBar from './SearchBar'
 import SidebarWeather from './SidebarWeather'
 
-const Sidebar = ({ changeLoc, wData, place, tempUnit, curLocWeather }) => {
+const Sidebar = () => {
+  
   return (
     <div className='sidebar'>
       <Logo />
-      <SearchBar changeLoc={changeLoc} curLocWeather={curLocWeather}/>
-      <SidebarWeather wData={wData} place={place} tempUnit={tempUnit} />
+      <SearchBar />
+      <SidebarWeather />
     </div>
   )
 }
