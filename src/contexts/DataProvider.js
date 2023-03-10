@@ -77,7 +77,7 @@ const DataProvider = (props) => {
         `https://us1.locationiq.com/v1/reverse?key=pk.f8c7ac4314ec5b028ae961f89d5db397&lat=${lat}&lon=${lon}&format=json`
       );
       const data = await res.json();
-      console.log('in place');
+      console.log('getting place');
       setPlace(
         `${
           data.address.city
@@ -127,6 +127,9 @@ const DataProvider = (props) => {
   useEffect(() => {
     if (loc) getCoords(loc);
   }, [loc, tempUnit]);
+  // useEffect(() => {
+  //   getWeatherData(mapLat, mapLng);
+  // }, [curLoc])
 
   const successCall = (pos) => {
     console.log('success geolocation');
@@ -156,7 +159,7 @@ const DataProvider = (props) => {
     hideHighlights,
     dayData,
     isFetching,
-    isHighlights,
+    isHighlights
   };
 
   return (

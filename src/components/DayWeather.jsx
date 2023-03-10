@@ -4,6 +4,10 @@ import data from '../data'
 import {Clear, LightCloud, HeavyCloud, LightRain, HeavyRain, Snow, Shower, Sleet, Thunderstorm, Hail} from '../assets/icons';
 import Tooltip from './Tooltip';
 import { AppContext } from '../contexts/DataProvider';
+import styled, { keyframes } from 'styled-components';
+import { rollIn } from 'react-animations';
+
+const AnimationDiv = styled.div`animation: 2s ${keyframes`${rollIn}`} 1`;
 
 const DayWeather = (props) => {
   const con = useContext(AppContext);
@@ -42,6 +46,8 @@ const DayWeather = (props) => {
 
 
   return <>
+  <AnimationDiv>
+
   <div className='day-weather' onMouseEnter={() => setIsTooltip(true)} onMouseLeave={() => setIsTooltip(false)} onClick={() => con.showHighlights(props.itemNum, itemDate)}>
     <p className='future-dates'>{itemDate}</p>
     <div className="weather-icon">
@@ -53,6 +59,7 @@ const DayWeather = (props) => {
     </div>
     {isTooltip ? <Tooltip tooltipText={'Click for details'} cName={'tt-dayweather'} styling={styling} /> : <></>}
   </div>
+  </AnimationDiv>
   </>
 }
 

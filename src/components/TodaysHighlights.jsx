@@ -2,6 +2,10 @@ import React, { useState, useEffect, useContext } from 'react';
 
 import directionIcon from '../assets/icons/wind-direction.png';
 import { AppContext } from '../contexts/DataProvider';
+import styled, { keyframes } from 'styled-components';
+import { rotateInDownLeft, zoomIn, merge } from 'react-animations';
+
+const AnimationDiv = styled.div`animation: 3s ${keyframes`${merge(rotateInDownLeft, zoomIn)}`} 1`;
 
 const curHour = new Date().getHours();
 
@@ -9,6 +13,7 @@ const TodaysHighlights = () => {
   const con = useContext(AppContext);
   return (
     <>
+    <AnimationDiv>
       <div className="todays-highlights">
         <h5>Today's Highlights</h5>
         <div className="highlights-container">
@@ -18,6 +23,7 @@ const TodaysHighlights = () => {
           <AirPressure wData={con.wData} />
         </div>
       </div>
+    </AnimationDiv>
     </>
   );
 };

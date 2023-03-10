@@ -1,7 +1,10 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { MapContainer, Marker, TileLayer, useMap, useMapEvents } from 'react-leaflet';
 import { AppContext } from '../contexts/DataProvider';
+import styled, { keyframes } from 'styled-components';
+import { slideInDown } from 'react-animations';
 
+const AnimationDiv = styled.div`animation: 1s ${keyframes`${slideInDown}`} 1`;
 const WeatherMap = () => {
   const con = useContext(AppContext);
   const [centerCoords, setCenterCoords] = useState([28.4089, 77.3178]);
@@ -18,6 +21,7 @@ const WeatherMap = () => {
 
     
   return (
+    <AnimationDiv>
     <div className="weather-map">
         <MapContainer center={centerCoords} zoom={13}className='map-container' style={{height: '100%'}}>
           <Map setLoc={setLoc} centerCoords={centerCoords}/>
@@ -26,6 +30,7 @@ const WeatherMap = () => {
           </Marker>
         </MapContainer>
     </div>
+    </AnimationDiv>
   )
 }
 

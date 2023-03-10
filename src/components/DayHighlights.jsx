@@ -20,6 +20,7 @@ const DayHighlights = () => {
   const tUnit = con.wData.daily_units.temperature_2m_max === '°C' ? '°C' : '°F';
 
   return <>
+
     <div className='day-highlights'>
       <div className="hl-container">
        <button className='close-btn' onClick={con.hideHighlights}>X</button>

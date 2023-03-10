@@ -1,5 +1,9 @@
 import React, { useEffect, useContext } from 'react'
 import { AppContext } from '../contexts/DataProvider'
+import styled, { keyframes } from 'styled-components';
+import { slideInRight } from 'react-animations';
+
+const AnimationDiv = styled.div`animation: 2s ${keyframes`${slideInRight}`} 1`;
 
 const Options = () => {
   const con = useContext(AppContext);
@@ -13,6 +17,8 @@ const Options = () => {
   }, [])
 
   return <>
+  <AnimationDiv>
+
   <div className="options">
     <form onSubmit={(e) => e.preventDefault()}>
       <label htmlFor='degC'>
@@ -25,6 +31,7 @@ const Options = () => {
       </label>
     </form>
   </div>
+  </AnimationDiv>
   </>
 }
 
