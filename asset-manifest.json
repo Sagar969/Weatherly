@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/weatherly/static/css/main.b3e8bf32.css",
-    "main.js": "/weatherly/static/js/main.eb8f2fb0.js",
+    "main.css": "/weatherly/static/css/main.e0484bd4.css",
+    "main.js": "/weatherly/static/js/main.b11fe90b.js",
     "static/media/search.png": "/weatherly/static/media/search.c6544d3156a8bde3d076.png",
     "static/media/dark-mode.png": "/weatherly/static/media/dark-mode.dce778ec0e8bd498f79d.png",
     "static/media/light-mode.png": "/weatherly/static/media/light-mode.39944d830f4eb3eb3863.png",
@@ -12,11 +12,11 @@
     "static/media/Shower.png": "/weatherly/static/media/Shower.ea1e199aedb22fe4dd92.png",
     "static/media/Sleet.png": "/weatherly/static/media/Sleet.6ef96c5a2098a6b1a146.png",
     "index.html": "/weatherly/index.html",
-    "main.b3e8bf32.css.map": "/weatherly/static/css/main.b3e8bf32.css.map",
-    "main.eb8f2fb0.js.map": "/weatherly/static/js/main.eb8f2fb0.js.map"
+    "main.e0484bd4.css.map": "/weatherly/static/css/main.e0484bd4.css.map",
+    "main.b11fe90b.js.map": "/weatherly/static/js/main.b11fe90b.js.map"
   },
   "entrypoints": [
-    "static/css/main.b3e8bf32.css",
-    "static/js/main.eb8f2fb0.js"
+    "static/css/main.e0484bd4.css",
+    "static/js/main.b11fe90b.js"
   ]
 }
