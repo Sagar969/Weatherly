@@ -123,6 +123,7 @@ p {
   }
 
   & .sidebar-weather {
+    min-height: calc(100vh - 120px);
     & .sidebar-weather-icon {
       @include flex;
       width: 100%;
@@ -181,6 +182,7 @@ p {
   left: 25%;
   padding: 5%;
   background: $bg-main;
+  overflow: hidden;
 
   & .weather-map {
     height: 400px;
@@ -557,6 +559,7 @@ p {
   top: 50%;
   gap: 50px;
   transform: translateY(-50%);
+  z-index: 98;
   & img {
     z-index: 100;
     animation: loading-clouds 2s linear infinite;
@@ -639,6 +642,7 @@ p {
       }
     }
     & .sidebar-weather {
+      min-height: fit-content;
       & .sidebar-weather-icon:before {
         top: 120px;
       }

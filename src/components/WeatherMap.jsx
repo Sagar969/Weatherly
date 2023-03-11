@@ -4,7 +4,7 @@ import { AppContext } from '../contexts/DataProvider';
 import styled, { keyframes } from 'styled-components';
 import { slideInDown } from 'react-animations';
 
-const AnimationDiv = styled.div`animation: 1s ${keyframes`${slideInDown}`} 1`;
+let AnimationDiv = styled.div`animation: 1s ${keyframes`${slideInDown}`} 1`;
 const WeatherMap = () => {
   const con = useContext(AppContext);
   const lat = con.mapCoords[0];

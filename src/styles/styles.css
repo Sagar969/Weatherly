@@ -108,6 +108,9 @@ p {
 .sidebar .search-box > img:hover {
   cursor: pointer;
 }
+.sidebar .sidebar-weather {
+  min-height: calc(100vh - 120px);
+}
 .sidebar .sidebar-weather .sidebar-weather-icon {
   display: flex;
   justify-content: center;
@@ -165,6 +168,7 @@ p {
   left: 25%;
   padding: 5%;
   background: var(--bg-main);
+  overflow: hidden;
 }
 .weather-display .weather-map {
   height: 400px;
@@ -550,6 +554,7 @@ p {
   top: 50%;
   gap: 50px;
   transform: translateY(-50%);
+  z-index: 98;
 }
 .loading img {
   z-index: 100;
@@ -626,6 +631,10 @@ p {
   }
   .sidebar .search-box > img {
     right: 10%;
+  }
+  .sidebar .sidebar-weather {
+    min-height: -moz-fit-content;
+    min-height: fit-content;
   }
   .sidebar .sidebar-weather .sidebar-weather-icon:before {
     top: 120px;

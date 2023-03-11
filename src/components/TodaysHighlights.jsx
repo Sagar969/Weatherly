@@ -3,14 +3,20 @@ import React, { useState, useEffect, useContext } from 'react';
 import directionIcon from '../assets/icons/wind-direction.png';
 import { AppContext } from '../contexts/DataProvider';
 import styled, { keyframes } from 'styled-components';
-import { rotateInDownLeft, zoomIn, merge } from 'react-animations';
+import { rotateInDownLeft, zoomIn, merge, flip } from 'react-animations';
 
-const AnimationDiv = styled.div`animation: 3s ${keyframes`${merge(rotateInDownLeft, zoomIn)}`} 1`;
+let AnimationDiv = styled.div`animation: 3s ${keyframes`${merge(rotateInDownLeft, zoomIn)}`} 1`;
 
 const curHour = new Date().getHours();
 
 const TodaysHighlights = () => {
   const con = useContext(AppContext);
+
+  useEffect(() => {
+    AnimationDiv = styled.div``;
+    AnimationDiv = styled.div`animation: 2s ${keyframes`${flip}`} 1`;
+  }, [con.wData])
+
   return (
     <>
     <AnimationDiv>

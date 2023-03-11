@@ -1,13 +1,13 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 
 import data from '../data'
 import {Clear, LightCloud, HeavyCloud, LightRain, HeavyRain, Snow, Shower, Sleet, Thunderstorm, Hail} from '../assets/icons';
 import Tooltip from './Tooltip';
 import { AppContext } from '../contexts/DataProvider';
 import styled, { keyframes } from 'styled-components';
-import { rollIn } from 'react-animations';
+import { rollIn, flip, slideInRight } from 'react-animations';
 
-const AnimationDiv = styled.div`animation: 2s ${keyframes`${rollIn}`} 1`;
+let AnimationDiv = styled.div`animation: 2s ${keyframes`${rollIn}`} 1`;
 
 const DayWeather = (props) => {
   const con = useContext(AppContext);
@@ -27,6 +27,11 @@ const DayWeather = (props) => {
 
 
   const [isTooltip, setIsTooltip] = useState(false);
+
+  useEffect(() => {
+    AnimationDiv = styled.div``;
+    AnimationDiv = styled.div`animation: 2s ${keyframes`${flip}`} 1`;
+  }, [con.wData])
 
 
   const styling = {
