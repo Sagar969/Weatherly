@@ -34,10 +34,13 @@ const DayWeather = (props) => {
       position: 'absolute',
       bottom: '15%',
       fontSize: '.6rem',
-      border: '1px solid',
+      fontWeight: '600',
+      border: '1px solid #000',
+      borderRadius: '5px',
+      color: '#000',
       padding: '2px',
       zIndex: '20',
-      background: '$bg-secondary',
+      background: '#fff',
       opacity: '.8'
     }
   }
@@ -57,7 +60,7 @@ const DayWeather = (props) => {
       <p className="max-temp">{maxTemp}&deg;{tempCF}</p>
       <p className="min-temp">{minTemp}&deg;{tempCF}</p>
     </div>
-    {isTooltip ? <Tooltip tooltipText={'Click for details'} cName={'tt-dayweather'} styling={styling} /> : <></>}
+    {isTooltip ? <Tooltip tooltipText={'Click for more details'} cName={'tt-dayweather'} styling={styling} /> : <></>}
   </div>
   </AnimationDiv>
   </>

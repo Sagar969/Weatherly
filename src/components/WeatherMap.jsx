@@ -7,14 +7,17 @@ import { slideInDown } from 'react-animations';
 const AnimationDiv = styled.div`animation: 1s ${keyframes`${slideInDown}`} 1`;
 const WeatherMap = () => {
   const con = useContext(AppContext);
+  const lat = con.mapCoords[0];
+  const lng = con.mapCoords[1];
   const [centerCoords, setCenterCoords] = useState([28.4089, 77.3178]);
   
   useEffect(() => {
-    if(con.mapLat !== 0 && con.mapLng !== 0) {
-      setCenterCoords([con.mapLat, con.mapLng]);
+    if(lat !== 0 && lng !== 0) {
+      setCenterCoords([lat, lng]);
     }
-  }, [con.mapLat, con.mapLng])
-  const setLoc = (newLat, newLng) => {
+  }, [lat, lng])
+
+  const newLoc = (newLat, newLng) => {
     con.getMapPos(newLat, newLng);
     setCenterCoords([newLat, newLng]);
   }
@@ -24,7 +27,7 @@ const WeatherMap = () => {
     <AnimationDiv>
     <div className="weather-map">
         <MapContainer center={centerCoords} zoom={13}className='map-container' style={{height: '100%'}}>
-          <Map setLoc={setLoc} centerCoords={centerCoords}/>
+          <Map newLoc={newLoc} centerCoords={centerCoords}/>
           <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"/>
           <Marker position={centerCoords}>
           </Marker>
@@ -36,13 +39,12 @@ const WeatherMap = () => {
 
 export default WeatherMap
 
-const Map = ({ setLoc, centerCoords }) => {
+const Map = ({ newLoc, centerCoords }) => {
   const map = useMap();
   map.setView(centerCoords);
   const mapEvents = useMapEvents({
     click(e) {
-      console.log(e.latlng)
-      setLoc(e.latlng.lat, e.latlng.lng);
+      newLoc(e.latlng.lat, e.latlng.lng);
       mapEvents.setView(e.latlng, mapEvents.getZoom());
     },
   })

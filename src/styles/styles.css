@@ -251,7 +251,7 @@ p {
   margin-top: 10px;
 }
 .weather-display .future-weather .day-weather .weather-icon {
-  height: 90px;
+  height: 130px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -474,20 +474,13 @@ p {
   width: 20px;
 }
 
-.day-highlights {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 100vh;
-  z-index: 80;
-}
 .day-highlights .bg-overlay {
   position: fixed;
   top: 0;
   width: 100%;
   height: 100%;
   background: var(--bg-overlay);
-  opacity: 0.2;
+  opacity: 0.1;
   filter: blur(2px);
   z-index: 81;
 }
@@ -496,14 +489,9 @@ p {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  position: fixed;
-  width: 80%;
-  max-width: 700px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  width: 100%;
   padding: 5%;
-  z-index: 82;
+  z-index: 83;
   background: var(--bg-popup);
   border: 2px solid var(--bg-main);
   border-radius: 10px;
@@ -525,6 +513,9 @@ p {
   order: 2;
 }
 .day-highlights .hl-container .weather-details .max-temp {
+  order: 1;
+}
+.day-highlights .hl-container .weather-details .min-temp {
   order: 3;
 }
 .day-highlights .hl-container .close-btn {
@@ -606,6 +597,9 @@ p {
   .weather-display .future-weather {
     display: grid;
     grid-template: 1fr 1fr/1fr 1fr 1fr;
+  }
+  .weather-display .future-weather .day-weather .weather-icon {
+    height: 90px;
   }
   .weather-display .todays-highlights {
     margin-top: 20px;

@@ -10,8 +10,7 @@ const DataProvider = (props) => {
   const [tempUnit, setTempUnit] = useState('celsius');
   const [isFetching, setisFetching] = useState(false);
   const [errNum, setErrNum] = useState(0);
-  const [mapLat, setMapLat] = useState(0);
-  const [mapLng, setMapLng] = useState(0);
+  const [mapCoords, setMapCoords] = useState(0);
   const [isHighlights, setIsHighlights] = useState(false);
   const [dayData, setDayData] = useState([2, 'ok']);
 
@@ -23,16 +22,13 @@ const DataProvider = (props) => {
     setIsHighlights(false);
   };
   const changeLoc = (newLoc) => {
-    console.log('changing loc');
     setLoc(newLoc);
   };
   const changeTempUnit = (unit) => {
-    console.log('changing tempUnit');
     setisFetching(false);
     setTempUnit(unit === 'C' ? 'celsius' : 'fahrenheit');
   };
   const handleError = (err, num) => {
-    console.log('handling error');
     console.error(err);
     setisFetching(false);
     setErrNum(num);
@@ -62,8 +58,7 @@ const DataProvider = (props) => {
         `https://us1.locationiq.com/v1/search?key=pk.f8c7ac4314ec5b028ae961f89d5db397&q=${loc}&format=json`
       );
       const data = await res.json();
-      setMapLat(data[0].lat);
-      setMapLng(data[0].lon);
+      setMapCoords([data[0].lat, data[0].lon]);
       await getWeatherData(data[0].lat, data[0].lon);
       await getPlace(data[0].lat, data[0].lon);
     } catch (err) {
@@ -77,7 +72,6 @@ const DataProvider = (props) => {
         `https://us1.locationiq.com/v1/reverse?key=pk.f8c7ac4314ec5b028ae961f89d5db397&lat=${lat}&lon=${lon}&format=json`
       );
       const data = await res.json();
-      console.log('getting place');
       setPlace(
         `${
           data.address.city
@@ -106,11 +100,7 @@ const DataProvider = (props) => {
       );
       const data = await res.json();
       setWData(data);
-      console.log(data);
       setisFetching(false);
-      console.log(curLoc);
-      if (curLoc) await getPlace(data.latitude, data.longitude);
-      setCurLoc(false);
       setErrNum(0);
     } catch (err) {
       handleError(err, 3);
@@ -121,28 +111,33 @@ const DataProvider = (props) => {
     navigator.geolocation.getCurrentPosition(successCall, errorCall);
   };
 
+  const successCall = (pos) => {
+    setMapCoords([pos.coords.latitude, pos.coords.longitude]);
+    setLoc('');
+    setCurLoc(true);
+  };
+  const errorCall = (error) => {
+    console.error(error);
+    setErrNum(1);
+  };
+
   useEffect(() => {
     if (!loc) curLocWeather();
   }, [tempUnit]);
   useEffect(() => {
     if (loc) getCoords(loc);
   }, [loc, tempUnit]);
-  // useEffect(() => {
-  //   getWeatherData(mapLat, mapLng);
-  // }, [curLoc])
-
-  const successCall = (pos) => {
-    console.log('success geolocation');
-    setCurLoc(true);
-    console.log(curLoc);
-    setMapLat(pos.coords.latitude);
-    setMapLng(pos.coords.longitude);
-    getWeatherData(pos.coords.latitude, pos.coords.longitude);
-  };
-  const errorCall = (error) => {
-    console.error(error);
-    setErrNum(1);
-  };
+  useEffect(() => {
+    if(curLoc) {
+      getWeatherData(mapCoords[0], mapCoords[1]);
+    }
+  }, [curLoc])
+  useEffect(() => {
+    if(curLoc) {
+      setCurLoc(false);
+      getPlace(wData.latitude, wData.longitude);
+    }
+  }, [wData])
 
   const value = {
     changeLoc,
@@ -153,8 +148,7 @@ const DataProvider = (props) => {
     errNum,
     changeTempUnit,
     getMapPos,
-    mapLat,
-    mapLng,
+    mapCoords,
     showHighlights,
     hideHighlights,
     dayData,

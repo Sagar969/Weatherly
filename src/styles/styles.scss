@@ -258,7 +258,7 @@ p {
         margin-top: 10px;
       }
       & .weather-icon {
-        height: 90px;
+        height: 130px;
         @include flex;
         & img {
           width: 60%;
@@ -485,32 +485,22 @@ p {
 
 // Highlights popup
 .day-highlights {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 100vh;
-  z-index: 80;
   & .bg-overlay {
     position: fixed;
     top: 0;
     width: 100%;
     height: 100%;
     background: $bg-overlay;
-    opacity: .2;
+    opacity: .1;
     filter: blur(2px);
     z-index: 81;
   }
   & .hl-container {
     @include flex;
     flex-direction: column;
-    position: fixed;
-    width: 80%;
-    max-width: 700px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    width: 100%;
     padding: 5%;
-    z-index: 82;
+    z-index: 83;
     background: $bg-popup;
     border: 2px solid $bg-main;
     border-radius: 10px;
@@ -528,6 +518,9 @@ p {
           order: 2;
         }
         & .max-temp {
+          order: 1;
+        }
+        & .min-temp {
           order: 3;
         }
     }
@@ -611,6 +604,11 @@ p {
     & .future-weather {
       display: grid;
       grid-template: 1fr 1fr / 1fr 1fr 1fr;
+      & .day-weather {
+        & .weather-icon {
+          height: 90px;
+        }
+      }
     }
     & .todays-highlights {
       margin-top: 20px;

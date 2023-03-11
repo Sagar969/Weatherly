@@ -4,12 +4,38 @@ import { setWeatherIcon } from './DayWeather';
 import directionIcon from '../assets/icons/wind-direction.png';
 import {Clear, LightCloud, HeavyCloud, LightRain, HeavyRain, Snow, Shower, Sleet, Thunderstorm, Hail} from '../assets/icons';
 import { AppContext } from '../contexts/DataProvider';
+import styled, { keyframes } from 'styled-components';
+
+const zoomInAni = keyframes`
+0% { transform: translate(-50%, -200%); }
+100% { transform: translate(-50%, -50%); }
+`
+const zoomOutAni = keyframes`
+0% { transform: translate(-50%, -50%); }
+100% { transform: translate(-50%, 100%); }
+`
+
+let AnimationDiv = styled.div`animation: 1s ${zoomInAni} 1;`;
+
+
+const style = {
+  width: '80%',
+  position: 'fixed',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  transformOrigin: 'center',
+  maxWidth: '700px',
+  height: 'fit-content',
+  zIndex: '82',
+}
 
 const curHour = new Date().getHours();
 
 const DayHighlights = () => {
   const con = useContext(AppContext);
 
+  const [isMounted, setIsMounted] = useState(true);
   const dayNum = con.dayData[0];
   const date = con.dayData[1];
 
@@ -19,11 +45,24 @@ const DayHighlights = () => {
   const icon = setWeatherIcon(weatherType);
   const tUnit = con.wData.daily_units.temperature_2m_max === '°C' ? '°C' : '°F';
 
+  const closeHighlights = () => {
+    setIsMounted(false);
+    setTimeout(() => {
+      con.hideHighlights();
+    }, 700);
+  }
+  
+  useEffect(() => {
+    const ani = isMounted ? zoomOutAni : zoomInAni;
+    AnimationDiv = styled.div`animation: 1s ${ani} 1;`;
+  }, [isMounted])
+
   return <>
 
     <div className='day-highlights'>
+      <AnimationDiv style={style} className={isMounted ? "in" : "out"} >
       <div className="hl-container">
-       <button className='close-btn' onClick={con.hideHighlights}>X</button>
+       <button className='close-btn' onClick={closeHighlights}>X</button>
        <h4 className="date">{date}</h4>
        <div className="weather-details">
           <img src={icon} alt="#" />
@@ -43,7 +82,8 @@ const DayHighlights = () => {
         <AirPressure wData={con.wData} dayNum={dayNum}/>
        </div>
       </div>
-    <div className="bg-overlay" onClick={con.hideHighlights}></div>
+      </AnimationDiv>
+      <div className="bg-overlay" onClick={closeHighlights}></div>
     </div>
   </>
   
