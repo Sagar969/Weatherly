@@ -23,14 +23,14 @@ For live site view, [Click here](https://sagar969.github.io/weatherly/)
 
 ## Overview
 
-### The Product
-
 Weatherly is a real-time weather forecasting app. This app provides houly updated weather details of the places all around the world. You just have to write down the name of place in searchbar or even better mark down the location on map and this app will provide you weather data of that place.
+### The Product
 
 In this app users can:
 
 - allow location access to check different weather measures in their city.
 - be able to use the app after denying the access to location.
+- search for any place around the world.
 - See different weather measures - maximum and minimum temperature, weather type, wind speed and direction, humidity, visibility and air pressure.
 - check the weather conditions for today and next 6 days.
 - switch to light or dark theme.
@@ -66,7 +66,8 @@ Desktop and Mobile view -
 
 ## My process
 This is my first React project. I started with basic react concepts like basic hooks and a lot of prop drilling and with time, I added some advanced features to it and context api to reduce prop drilling.
-I used total of three APIs in this project for different purposes. Used react-animations and styled components for animations on mounting and unmounting of components
+
+I used total of three APIs in this project for different purposes. Used react-animations and styled components for animations on mounting and unmounting of components.
 
 ### Built with
 
@@ -81,12 +82,11 @@ I used total of three APIs in this project for different purposes. Used react-an
 
 ### What I learned
 
-I learned all the react concepts required for a full fledged app. I learned react hooks, state management, animation in components, context api, Sass styling, API integration and many more things.
+I learned all the react concepts required to build a full fledged app. I learned react hooks, state management, animation in components, context api, Sass styling, API integration and many more things.
 
 ### Continued development
 
 I am deep diving into state management in react and learning a state management library called redux after completion of this project.
-
 
 
 ### Useful resources
