@@ -4,7 +4,6 @@ Weatherly is an advanced real-time weather forecasting app which comes with grea
 
 For live site view, [Click here](https://sagar969.github.io/weatherly/)
 
----
 
 ## Table of contents
 
@@ -19,7 +18,6 @@ For live site view, [Click here](https://sagar969.github.io/weatherly/)
   - [Useful resources](#useful-resources)
 - [Author](#author)
 
----
 
 ## Overview
 
@@ -62,7 +60,6 @@ Desktop and Mobile view -
 - Source code URL: [Source Code](https://github.com/Sagar969/weatherly)
 - Live Site URL: [Live Site](https://sagar969.github.io/weatherly/)
 
----
 
 ## My process
 This is my first React project. I started with basic react concepts like basic hooks and a lot of prop drilling and with time, I added some advanced features to it and context api to reduce prop drilling.
@@ -96,7 +93,6 @@ I am deep diving into state management in react and learning a state management 
 - [5 ways to animate a react app](https://medium.com/hackernoon/5-ways-to-animate-a-reactjs-app-in-2019-56eb9af6e3bf) - This medium article let me know about different ways to apply animations in react.
 - [Deploying react apps to github pages](https://blog.logrocket.com/deploying-react-apps-github-pages/) - This article helped me solving my issues regarding deployment of react app on github pages.s
 
----
 
 ## Author
 
