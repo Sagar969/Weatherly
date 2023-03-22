@@ -5,7 +5,7 @@ import {Clear, LightCloud, HeavyCloud, LightRain, HeavyRain, Snow, Shower, Sleet
 import Tooltip from './Tooltip';
 import { AppContext } from '../contexts/DataProvider';
 import styled, { keyframes } from 'styled-components';
-import { rollIn, flip, slideInRight } from 'react-animations';
+import { rollIn, flip } from 'react-animations';
 
 let AnimationDiv = styled.div`animation: 2s ${keyframes`${rollIn}`} 1`;
 
@@ -33,6 +33,10 @@ const DayWeather = (props) => {
     AnimationDiv = styled.div`animation: 2s ${keyframes`${flip}`} 1`;
   }, [con.wData])
 
+  useEffect(() => {
+    if(window.screen.width < 600) showTooltip();
+  }, [window.screen.width])
+
 
   const styling = {
     div : {
@@ -46,17 +50,24 @@ const DayWeather = (props) => {
       padding: '2px',
       zIndex: '20',
       background: '#fff',
-      opacity: '.8'
+      opacity: '.5'
     }
   }
 
   const itemDate = props.itemNum == '1' ? 'Tomorrow' : `${data.days[day]}, ${date} ${data.months[month]}`;
 
+  const showTooltip = () => {
+    setIsTooltip(true);
+  }
+  const hideTooltip = () => {
+    if(window.screen.width > 600) setIsTooltip(false);
+  }
+
 
   return <>
   <AnimationDiv>
 
-  <div className='day-weather' onMouseEnter={() => setIsTooltip(true)} onMouseLeave={() => setIsTooltip(false)} onClick={() => con.showHighlights(props.itemNum, itemDate)}>
+  <div className='day-weather' onMouseEnter={showTooltip} onMouseLeave={hideTooltip} onClick={() => con.showHighlights(props.itemNum, itemDate)}>
     <p className='future-dates'>{itemDate}</p>
     <div className="weather-icon">
       <img src={icon} alt="weather symbol" />
@@ -66,6 +77,7 @@ const DayWeather = (props) => {
       <p className="min-temp">{minTemp}&deg;{tempCF}</p>
     </div>
     {isTooltip ? <Tooltip tooltipText={'Click for more details'} cName={'tt-dayweather'} styling={styling} /> : <></>}
+    {/* <Tooltip tooltipText={'Click for more details'} cName={'tt-dayweather'} styling={styling} /> */}
   </div>
   </AnimationDiv>
   </>

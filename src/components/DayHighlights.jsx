@@ -6,16 +6,16 @@ import {Clear, LightCloud, HeavyCloud, LightRain, HeavyRain, Snow, Shower, Sleet
 import { AppContext } from '../contexts/DataProvider';
 import styled, { keyframes } from 'styled-components';
 
-const zoomInAni = keyframes`
+const slideInAni = keyframes`
 0% { transform: translate(-50%, -200%); }
 100% { transform: translate(-50%, -50%); }
 `
-const zoomOutAni = keyframes`
+const slideOutAni = keyframes`
 0% { transform: translate(-50%, -50%); }
 100% { transform: translate(-50%, 100%); }
 `
 
-let AnimationDiv = styled.div`animation: 1s ${zoomInAni} 1;`;
+let AnimationDiv = styled.div`animation: 1s ${slideInAni} 1;`;
 
 
 const style = {
@@ -53,7 +53,7 @@ const DayHighlights = () => {
   }
   
   useEffect(() => {
-    const ani = isMounted ? zoomOutAni : zoomInAni;
+    const ani = isMounted ? slideOutAni : slideInAni;
     AnimationDiv = styled.div`animation: 1s ${ani} 1;`;
   }, [isMounted])
 
