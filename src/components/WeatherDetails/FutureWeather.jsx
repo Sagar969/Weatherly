@@ -1,4 +1,3 @@
-import React from 'react'
 import DayWeather from './DayWeather'
 
 

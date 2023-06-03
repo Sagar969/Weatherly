@@ -1,5 +1,5 @@
-import React, { useContext } from 'react'
-import { AppContext } from '../contexts/DataProvider'
+import { useContext } from 'react'
+import { AppContext } from '../../contexts/DataProvider'
 
 const ErrorDisplay = () => {
   const con = useContext(AppContext);
@@ -30,7 +30,6 @@ const LoadingData = () => {
   return <div className="loading-data">
     <div className="loading-sun">
       <div className="sun"></div>
-      <h5>Loading...</h5>
     </div>
   </div>
 }

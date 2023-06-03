@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext } from 'react';
 
-import directionIcon from '../assets/icons/wind-direction.png';
-import { AppContext } from '../contexts/DataProvider';
+import directionIcon from '../../assets/icons/wind-direction.png';
+import { AppContext } from '../../contexts/DataProvider';
 import styled, { keyframes } from 'styled-components';
 import { rotateInDownLeft, zoomIn, merge, flip } from 'react-animations';
 
-let AnimationDiv = styled.div`animation: 3s ${keyframes`${merge(rotateInDownLeft, zoomIn)}`} 1`;
+let AnimationDiv = styled.div`animation: .5s ${keyframes`${merge(rotateInDownLeft, zoomIn)}`} 1`;
 
 const curHour = new Date().getHours();
 
@@ -14,7 +14,7 @@ const TodaysHighlights = () => {
 
   useEffect(() => {
     AnimationDiv = styled.div``;
-    AnimationDiv = styled.div`animation: 2s ${keyframes`${flip}`} 1`;
+    AnimationDiv = styled.div`animation: .5s ${keyframes`${zoomIn}`} 1`;
   }, [con.wData])
 
   return (

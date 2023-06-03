@@ -1,8 +1,8 @@
-import React, { useContext, useEffect } from 'react'
+import { useContext, useEffect } from 'react'
 
-import gps from '../assets/icons/gps.png'
-import search from '../assets/icons/search.png'
-import { AppContext } from '../contexts/DataProvider'
+import gps from '../../assets/icons/gps.png'
+import search from '../../assets/icons/search.png'
+import { AppContext } from '../../contexts/DataProvider'
 
 
 const SearchBar = () => {

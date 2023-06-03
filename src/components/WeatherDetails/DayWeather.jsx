@@ -1,13 +1,13 @@
-import React, { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 
-import data from '../data'
-import {Clear, LightCloud, HeavyCloud, LightRain, HeavyRain, Snow, Shower, Sleet, Thunderstorm, Hail} from '../assets/icons';
-import Tooltip from './Tooltip';
-import { AppContext } from '../contexts/DataProvider';
+import data from '../../data'
+import {Clear, LightCloud, HeavyCloud, LightRain, HeavyRain, Snow, Shower, Sleet, Thunderstorm, Hail} from '../../assets/icons';
+import Tooltip from '../utilities/Tooltip';
+import { AppContext } from '../../contexts/DataProvider';
 import styled, { keyframes } from 'styled-components';
-import { rollIn, flip } from 'react-animations';
+import { rollIn, zoomIn } from 'react-animations';
 
-let AnimationDiv = styled.div`animation: 2s ${keyframes`${rollIn}`} 1`;
+let AnimationDiv = styled.div`animation: .5s ${keyframes`${rollIn}`} 1`;
 
 const DayWeather = (props) => {
   const con = useContext(AppContext);
@@ -30,7 +30,7 @@ const DayWeather = (props) => {
 
   useEffect(() => {
     AnimationDiv = styled.div``;
-    AnimationDiv = styled.div`animation: 2s ${keyframes`${flip}`} 1`;
+    AnimationDiv = styled.div`animation: .5s ${keyframes`${zoomIn}`} 1`;
   }, [con.wData])
 
   useEffect(() => {
@@ -77,7 +77,6 @@ const DayWeather = (props) => {
       <p className="min-temp">{minTemp}&deg;{tempCF}</p>
     </div>
     {isTooltip ? <Tooltip tooltipText={'Click for more details'} cName={'tt-dayweather'} styling={styling} /> : <></>}
-    {/* <Tooltip tooltipText={'Click for more details'} cName={'tt-dayweather'} styling={styling} /> */}
   </div>
   </AnimationDiv>
   </>

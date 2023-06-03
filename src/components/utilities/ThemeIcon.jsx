@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import lightMode from '../assets/images/light-mode.png'
-import darkMode from '../assets/images/dark-mode.png'
+import { useEffect, useState } from 'react'
+import lightMode from '../../assets/images/light-mode.png'
+import darkMode from '../../assets/images/dark-mode.png'
 
 const ThemeIcon = () => {
     const [isDarkTheme, setIsDarkTheme] = useState(true);

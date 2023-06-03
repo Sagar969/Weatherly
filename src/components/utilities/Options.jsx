@@ -1,9 +1,9 @@
 import React, { useEffect, useContext } from 'react'
-import { AppContext } from '../contexts/DataProvider'
+import { AppContext } from '../../contexts/DataProvider'
 import styled, { keyframes } from 'styled-components';
 import { slideInRight } from 'react-animations';
 
-const AnimationDiv = styled.div`animation: 2s ${keyframes`${slideInRight}`} 1`;
+const AnimationDiv = styled.div`animation: .5s ${keyframes`${slideInRight}`} 1`;
 
 const Options = () => {
   const con = useContext(AppContext);

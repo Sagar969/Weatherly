@@ -1,5 +1,4 @@
-import React from 'react'
-import clouds from '../assets/images/Cloud-background.png';
+import clouds from '../../assets/images/Cloud-background.png';
 
 const Loading = () => {
   return <div className="loading">
